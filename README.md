@@ -21,10 +21,14 @@ Example:
 ```nix
 # flake.nix
 {
+  inputs.flake-utils.url = "github:numtide/flake-utils";
   inputs.esy-fhs.url = "github:d4hines/esy-fhs";
-  outputs = { self, esy-fhs }: {
-      defaultApp = lib.makeFHSApp { };
-  };
+  outputs = { self, flake-utils, esy-fhs }:
+    flake-utils.lib.eachDefaultSystem (system:
+      {
+        defaultApp = esy-fhs.lib.makeFHSApp { inherit system; };
+      }
+    );
 }
 ```
 
