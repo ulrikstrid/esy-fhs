@@ -43,8 +43,8 @@
                 which
               ];
               extraBuildCommands = ''
-                cp ${pkgs.esy}/lib/ocaml/4.12.0/site-lib/esy/esyBuildPackageCommand $out/usr/lib/esy
-                cp ${pkgs.esy}/lib/ocaml/4.12.0/site-lib/esy/esyRewritePrefixCommand $out/usr/lib/esy
+                cp ${pkgs.esy}/lib/ocaml/4.14.0/site-lib/esy/esyBuildPackageCommand $out/usr/lib/esy
+                cp ${pkgs.esy}/lib/ocaml/4.14.0/site-lib/esy/esyRewritePrefixCommand $out/usr/lib/esy
                 ${extraBuildCommands}
               '';
             };
