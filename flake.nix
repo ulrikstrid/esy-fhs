@@ -67,7 +67,7 @@
       };
       in
       {
-        packages = { esy = pkgs.esy; };
+        packages = { esy = pkgs.esy; esy-fhs = lib.makeFHS { inherit system; }; };
         defaultApp = lib.makeFHSApp { inherit system; };
       });
 }
