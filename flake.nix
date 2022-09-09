@@ -1,8 +1,9 @@
 {
   description = "Esy package manager packaged for Nix";
+
   inputs.flake-utils.url = "github:numtide/flake-utils";
-  inputs.anmonteiro.url = "github:anmonteiro/nix-overlays";
-  outputs = { self, nixpkgs, flake-utils, anmonteiro }:
+  inputs.nixpkgs.url = "github:nix-ocaml/nix-overlays";
+  outputs = { self, nixpkgs, flake-utils }:
     let
       defaultExtraPackages = [ ];
       defaultExtraBuildCommands = "";
@@ -16,7 +17,6 @@
           }:
           let pkgs = import nixpkgs {
             inherit system;
-            overlays = [ anmonteiro.overlay ];
           }; in
           pkgs.buildFHSUserEnv
             {
@@ -64,7 +64,6 @@
     flake-utils.lib.eachDefaultSystem (system:
       let pkgs = import nixpkgs {
         inherit system;
-        overlays = [ anmonteiro.overlay ];
       };
       in
       {
